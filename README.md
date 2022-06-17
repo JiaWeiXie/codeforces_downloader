@@ -2,6 +2,9 @@
 
 ## Install
 
+- Python 3.8
+- poetry
+
 ```shell
 $ poetry install
 ```
@@ -9,5 +12,6 @@ $ poetry install
 ## Run
 
 ```shell
+$ poetry shell
 $ python -m codeforces_downloader 
 ```

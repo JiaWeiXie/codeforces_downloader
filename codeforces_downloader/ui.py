@@ -31,15 +31,13 @@ class DownloaderInterface:
             test_dir = pathlib.Path(dir_name)
             for idx, itme in enumerate(data):
                 file_index = idx + 1
-                index_dir = test_dir / f"{file_index}"
-                os.makedirs(index_dir, exist_ok=True)
                 inputs = normalization_text(itme["inputs"])
                 answer = normalization_text(itme["answer"])
 
-                with open(index_dir / f"{file_index}.in", "w") as in_file:
+                with open(test_dir / f"{file_index}.in", "w") as in_file:
                     in_file.write(inputs)
 
-                with open(index_dir / f"{file_index}.ans", "w") as ans_file:
+                with open(test_dir / f"{file_index}.ans", "w") as ans_file:
                     ans_file.write(answer)
 
             out_zip = shutil.make_archive(
