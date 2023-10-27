@@ -13,5 +13,6 @@ $ poetry install
 
 ```shell
 $ poetry shell
+$ playwright install
 $ python -m codeforces_downloader 
 ```

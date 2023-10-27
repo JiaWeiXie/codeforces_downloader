@@ -8,7 +8,7 @@ import gradio
 
 from gradio.components import Component
 
-from codeforces_downloader.downloader import get_submit_source_data
+from codeforces_downloader.downloader import get_all_testcase
 from codeforces_downloader.utils import normalization_text
 
 __all__ = [
@@ -18,7 +18,6 @@ __all__ = [
 
 class DownloaderInterface:
     submission_url = "https://codeforces.com/problemset/submission/%s/%s"
-    submit_source_url = "https://codeforces.com/data/submitSource"
 
     def __init__(self):
         self.block = gradio.Blocks()
@@ -49,12 +48,12 @@ class DownloaderInterface:
 
     def form_click(self, problem_id: str, submission_id: str):
         submission_url = self.submission_url % (problem_id, submission_id)
-        json_data = get_submit_source_data(submission_url, self.submit_source_url)
+        json_data = get_all_testcase(submission_url)
         zip_path = self.zip_test_data(json_data)
         return zip_path
 
     def url_source_click(self, url):
-        json_data = get_submit_source_data(url, self.submit_source_url)
+        json_data = get_all_testcase(url)
         zip_path = self.zip_test_data(json_data)
         return zip_path
 
